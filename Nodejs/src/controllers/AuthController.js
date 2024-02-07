@@ -5,7 +5,7 @@ const LoginHandler = async (request, reply, fastify) => {
 	if (!enteredPassword || !enteredUsername)
 		return reply.code(400).send({ message: "EF" });
 
-	const loginQueryString = "SELECT * FROM users WHERE username=$1";
+	const loginQueryString = "SELECT * FROM users WHERE (username=$1 AND (deleted_at IS NULL))";
 	const loginQueryResult = await fastify.pg.query(loginQueryString, [
 		enteredUsername,
 	]);
@@ -22,7 +22,7 @@ const LoginHandler = async (request, reply, fastify) => {
 	if (!doPasswordsMatch) return reply.code(401).send({ message: "WP" });
 
 	delete userObjectFromDB.password;
-	return reply.code(200).send({ message: userObjectFromDB });
+	return reply.send({ message: userObjectFromDB });
 };
 
 const SignupHandler = async (request, reply, fastify) => {
@@ -36,7 +36,7 @@ const SignupHandler = async (request, reply, fastify) => {
 	const signupQueryString =
 		"INSERT INTO users (username,password,created_at) VALUES ($1,$2,$3)";
 	await fastify.pg.query(signupQueryString, [username, hashedPassword, date]);
-	return reply.code(200).send({ message: "SS" });
+	return reply.send({ message: "SS" });
 };
 
 module.exports = { LoginHandler, SignupHandler };

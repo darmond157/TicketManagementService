@@ -1,4 +1,4 @@
-const { LoginHandler, SignupHandler } = require("../controllers/auth");
+const { LoginHandler, SignupHandler } = require("../controllers/AuthController");
 
 module.exports = (fastify) => {
 	fastify.post("/auth/login", async (request, reply) => {

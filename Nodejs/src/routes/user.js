@@ -1,4 +1,4 @@
-const { EditUser } = require("../controllers/user");
+const { EditUser } = require("../controllers/UserController");
 
 module.exports = (fastify) => {
 	fastify.put("/user", async (request, reply) => {

@@ -1,7 +1,7 @@
-const { LoginHandler, SignupHandler } = require("../controllers/auth");
+const { LoginHandler, SignupHandler } = require("../controllers/TicketController");
 
 module.exports = (fastify) => {
-	fastify.post("/ticket/submit", async (request, reply) => {
+	fastify.post("/ticket", async (request, reply) => {
 		try {
 			await LoginHandler(request, reply, fastify);
 		} catch (error) {
@@ -9,7 +9,7 @@ module.exports = (fastify) => {
 			reply.code(500).send({ message: "Internal Server Error ..." });
 		}
 	});
-	fastify.put("/ticket/edit", async (request, reply) => {
+	fastify.put("/ticket/:id", async (request, reply) => {
 		try {
 			await SignupHandler(request, reply, fastify);
 		} catch (error) {
@@ -17,7 +17,7 @@ module.exports = (fastify) => {
 			reply.code(500).send({ message: "Internal Server Error ..." });
 		}
 	});
-    fastify.delete("/ticket/remove", async (request, reply) => {
+    fastify.delete("/ticket/:id", async (request, reply) => {
 		try {
 			await SignupHandler(request, reply, fastify);
 		} catch (error) {

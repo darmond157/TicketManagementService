@@ -3,10 +3,10 @@ const {
 	viewProduct,
 	editProduct,
 	deleteProduct,
-} = require("../controllers/product");
+} = require("../controllers/ProductController");
 
 module.exports = (fastify) => {
-	fastify.post("/product/new", async (request, reply) => {
+	fastify.post("/product", async (request, reply) => {
 		try {
 			await addNewProduct(request, reply, fastify);
 		} catch (error) {
@@ -22,7 +22,7 @@ module.exports = (fastify) => {
 			reply.code(500).send({ message: "Internal Server Error ..." });
 		}
 	});
-	fastify.put("/product/edit", async (request, reply) => {
+	fastify.put("/product/:id", async (request, reply) => {
 		try {
 			await editProduct(request, reply, fastify);
 		} catch (error) {
@@ -30,7 +30,7 @@ module.exports = (fastify) => {
 			reply.code(500).send({ message: "Internal Server Error ..." });
 		}
 	});
-	fastify.delete("/product/delete", async (request, reply) => {
+	fastify.delete("/product/:id", async (request, reply) => {
 		try {
 			await deleteProduct(request, reply, fastify);
 		} catch (error) {
