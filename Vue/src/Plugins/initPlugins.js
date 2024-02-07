@@ -1,7 +1,8 @@
-import initLibraries from "@/Plugins/Libraries/initLibraries.js";
-import initComponents from "@/Plugins/Components/initComponents.js";
+import "@/Plugins/axios.js";
+import router from "@/Plugins/vue-router.js";
+import toast from "@/Plugins/vue-toast.js";
 
 export default (appInstance) => {
-	initLibraries(appInstance);
-	initComponents(appInstance);
+	router(appInstance);
+	toast(appInstance);
 };

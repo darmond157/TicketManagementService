@@ -39,7 +39,7 @@
 
 <script>
 import axios from "axios";
-import HandleLogin from "@/functions/Auth/loginFunctions.js";
+import HandleLogin from "@/controllers/Auth/loginFunctions.js";
 export default {
 	data() {
 		return {

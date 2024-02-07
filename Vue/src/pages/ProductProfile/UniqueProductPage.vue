@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { SaveThisProductDataInLocalStorage } from "@/functions/Product/UniqueProductPageFunctions";
+import { SaveThisProductDataInLocalStorage } from "@/controllers/Product/UniqueProductPageFunctions";
 import axios from "axios";
 export default {
 	data() {

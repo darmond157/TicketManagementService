@@ -51,7 +51,7 @@
 
 <script>
 import axios from "axios";
-import HandleSignup from "@/functions/Auth/signupFunctions.js";
+import HandleSignup from "@/controllers/Auth/signupFunctions.js";
 export default {
 	data() {
 		return {
