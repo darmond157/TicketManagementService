@@ -6,7 +6,7 @@ module.exports = (fastify) => {
 			await LoginHandler(request, reply, fastify);
 		} catch (error) {
 			console.error(error);
-			reply.code(500).send("Internal Server Error ...");
+			reply.code(500).send({ message: "Internal Server Error ..." });
 		}
 	});
 	fastify.post("/auth/signup", async (request, reply) => {
@@ -14,7 +14,7 @@ module.exports = (fastify) => {
 			await SignupHandler(request, reply, fastify);
 		} catch (error) {
 			console.error(error);
-			reply.code(500).send("Internal Server Error ...");
+			reply.code(500).send({ message: "Internal Server Error ..." });
 		}
 	});
 };

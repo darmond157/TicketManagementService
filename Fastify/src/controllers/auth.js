@@ -2,14 +2,16 @@ const bcrypt = require("bcrypt");
 
 const LoginHandler = async (request, reply, fastify) => {
 	const { username: enteredUsername, password: enteredPassword } = request.body;
-	if (!enteredPassword || !enteredUsername) return reply.code(400).send("EF");
+	if (!enteredPassword || !enteredUsername)
+		return reply.code(400).send({ message: "EF" });
 
 	const loginQueryString = "SELECT * FROM users WHERE username=$1";
 	const loginQueryResult = await fastify.pg.query(loginQueryString, [
 		enteredUsername,
 	]);
 
-	if (!loginQueryResult.rows.length) return reply.code(401).send("UNE");
+	if (!loginQueryResult.rows.length)
+		return reply.code(401).send({ message: "UNE" });
 
 	const userObjectFromDB = loginQueryResult.rows[0];
 	const userPasswordInDB = userObjectFromDB.password;
@@ -17,32 +19,24 @@ const LoginHandler = async (request, reply, fastify) => {
 		enteredPassword,
 		userPasswordInDB
 	);
-	if (!doPasswordsMatch) return reply.code(401).send("WP");
+	if (!doPasswordsMatch) return reply.code(401).send({ message: "WP" });
 
 	delete userObjectFromDB.password;
-	return reply.code(200).send(userObjectFromDB);
+	return reply.code(200).send({ message: userObjectFromDB });
 };
 
 const SignupHandler = async (request, reply, fastify) => {
-	const {
-		username: enteredUsername,
-		password: enteredPassword,
-		confirmPassword: enteredConfirmPassword,
-	} = request.body;
+	const { username, password, confirmPassword } = request.body;
+	if (password !== confirmPassword)
+		return reply.code(400).send({ message: "PAICDM" });
 
-	if (enteredPassword !== enteredConfirmPassword)
-		return reply.code(400).send("PAICDM");
+	const date = new Date().toISOString();
 
-	const hashedPassword = await bcrypt.hash(enteredPassword, 10);
+	const hashedPassword = await bcrypt.hash(password, 10);
 	const signupQueryString =
-		"INSERT INTO users (username,password,is_admin,product_id) VALUES ($1,$2,$3,$4)";
-	await fastify.pg.query(signupQueryString, [
-		enteredUsername,
-		hashedPassword,
-		false,
-		null,
-	]);
-	return reply.code(200).send("SS");
+		"INSERT INTO users (username,password,created_at) VALUES ($1,$2,$3)";
+	await fastify.pg.query(signupQueryString, [username, hashedPassword, date]);
+	return reply.code(200).send({ message: "SS" });
 };
 
 module.exports = { LoginHandler, SignupHandler };
