@@ -1,19 +1,33 @@
 # TicketManager-Backend
-### This project is the Backend of the Ticket-Manager project, implemented in Fastify-js
 
-## Response Code Agreements
-+ WP => wrong password
-+ UNE => user not exists
-+ PAICDM => password and its confirmation don't match
+### Successful Response Code Agreements
+
 + LS => logged in successfully
 + SS => signed up successfully
-+ EF => empty fields
+
++ UES => user editted successfully
+
 + PAS => product added successfully
 + PES => product editted successfully
 + PDS => product deleted successfully
+
++ TAS => ticket added successfully
++ TES => ticket editted successfully
++ TDS => ticket deleted successfully
+
+### Error Response Code Agreements
+
++ WP => wrong password
++ PAICDM => password and its confirmation don't match
+
++ UNE => user not exists
+
++ EF => empty fields
+
 + PAF => product add failed
-+ UUS => user updated successfully
 
 ## Configs
 + docker-compose exec postgres psql -U admin -d newdb -f /tmp/seed.sql
 + git clone --recurse-submodules [git remote address]
+
+## How To Run Project
