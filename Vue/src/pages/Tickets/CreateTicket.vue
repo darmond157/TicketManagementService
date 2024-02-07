@@ -17,11 +17,6 @@
 			placeholder="Please Write a Brief Description of Your Business ..."
 		/>
 
-		<div class="row mb-5 w-100 mx-auto">
-			<p class="mr-4">Ticket Deadline:</p>
-			<DatePicker v-model="ticketDeadline" valueType="format" />
-		</div>
-
 		<button class="btn btn-primary w-100 mx-auto" @click="submitTicket">
 			Submit Ticket
 		</button>
@@ -29,13 +24,11 @@
 </template>
 
 <script>
-import DatePicker from "vue2-datepicker";
-import "vue2-datepicker/index.css";
+//DATE PICKER
 
 import submitNewTicket from "@/functions/Ticket/createTicket.js";
 
 export default {
-	components: { DatePicker },
 	data() {
 		return {
 			ticketTitle: "",

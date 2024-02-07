@@ -34,12 +34,7 @@
 					</option>
 				</select>
 			</div>
-			<div class="ml-1">
-				<p class="mr-4 h4">createdAfter:</p>
-				<DatePicker v-model="createdAfter" valueType="format" class="mr-5" />
-				<p class="mr-4 h4">createdBefore:</p>
-				<DatePicker v-model="createdBefore" valueType="format" />
-			</div>
+			
 			<button @click="doFilters" class="btn btn-primary">Do Filters</button>
 		</div>
 		<div class="card-body">
@@ -58,12 +53,10 @@
 <script>
 import axios from "axios";
 import UserTickets from "./UserTicket.vue";
-import DatePicker from "vue2-datepicker";
-import "vue2-datepicker/index.css";
+//DATE PICKER
 export default {
 	components: {
 		UserTickets,
-		DatePicker,
 	},
 	data() {
 		return {
