@@ -2,7 +2,7 @@ version: "3.7"
 services:
   Ticket_Backend:
     build:
-      context: ./Fastify
+      context: ./Nodejs
     ports:
       - "3000:3000"
     depends_on:
