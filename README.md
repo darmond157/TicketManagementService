@@ -7,3 +7,4 @@
 + PAICDM => password and its confirmation don't match
 + LS => Logged in Successfully
 + SS => Signed up Successfully
++ EF => Empty Fields

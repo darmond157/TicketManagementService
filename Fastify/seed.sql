@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS users(
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(200) UNIQUE NOT NULL,
 	password VARCHAR(2000),
-	isAdmin BOOL,
-	productId INT
+	is_admin BOOL,
+	product_id INT
 );
 
 CREATE TABLE IF NOT EXISTS products(
@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS products(
 	title VARCHAR(200),
 	description VARCHAR(2000),
 	picture VARCHAR(10000),
-	adminId INT,
-	FOREIGN KEY (adminId) REFERENCES users(id)
+	admin_id INT,
+	FOREIGN KEY (admin_id) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS tickets(
@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS tickets(
 	description VARCHAR(2000),
 	deadline VARCHAR(100),
 	created VARCHAR(100),
-	submitterId INT,
-	FOREIGN KEY (submitterId) REFERENCES users(id)
+	submitter_id INT,
+	FOREIGN KEY (submitter_id) REFERENCES users(id)
 );
+
+INSERT INTO users (username,password,is_admin,product_id) VALUES ('A','B',false,NULL)
