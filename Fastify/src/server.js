@@ -6,7 +6,6 @@ require("./plugins/postgres")(fastify)
 	.then(() => {
 		require("./routes/auth")(fastify);
 		require("./routes/user")(fastify);
-		require("./routes/admin")(fastify);
 		require("./routes/product")(fastify);
 		require("./routes/ticket")(fastify);
 	})

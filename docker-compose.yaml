@@ -1,0 +1,26 @@
+version: "3.7"
+services:
+  Ticket_Backend:
+    build:
+      context: ./Fastify
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    networks:
+      - ticket_manager_network
+  Ticket_Frontend:
+    build:
+      context: ./Vue
+    ports:
+      - ""
+    depends_on:
+      - Ticket_Backend
+    networks:
+      - ticket_manager_network
+  postgres:
+    image: postgres:14
+    networks:
+      - ticket_manager_network
+networks:
+  ticket_manager_network:

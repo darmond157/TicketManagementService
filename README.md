@@ -5,6 +5,10 @@
 + WP => wrong password
 + UNE => user not exists
 + PAICDM => password and its confirmation don't match
-+ LS => Logged in Successfully
-+ SS => Signed up Successfully
-+ EF => Empty Fields
++ LS => logged in successfully
++ SS => signed up successfully
++ EF => empty fields
++ PAS => product added successfully
++ PES => product editted successfully
++ PDS => product deleted successfully
++ PAF => product add failed

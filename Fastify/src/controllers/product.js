@@ -38,4 +38,11 @@ const editProduct = async (request, reply, fastify) => {
 	return reply.code(200).send({ message: "PES" });
 };
 
-module.exports = { addNewProduct, viewProduct, editProduct };
+const deleteProduct = async () => {
+	const { id } = request.body;
+	const editProductQueryString = "DELETE FROM products WHERE id=$3";
+	await fastify.pg.query(editProductQueryString, [id]);
+	reply.code(200).send({ message: "PDS" });
+};
+
+module.exports = { addNewProduct, viewProduct, editProduct, deleteProduct };
