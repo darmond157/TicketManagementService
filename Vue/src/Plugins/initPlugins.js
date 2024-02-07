@@ -1,8 +1,8 @@
 import "@/Plugins/axios.js";
 import router from "@/Plugins/vue-router.js";
-import toast from "@/Plugins/vue-toast.js";
+import vuetify from "@/Plugins/vuetify.js";
 
 export default (appInstance) => {
 	router(appInstance);
-	toast(appInstance);
+	vuetify(appInstance)
 };
