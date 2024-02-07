@@ -12,6 +12,7 @@
 + PES => product editted successfully
 + PDS => product deleted successfully
 + PAF => product add failed
++ UUS => user updated successfully
 
 ## Configs
 + docker-compose exec postgres psql -U admin -d newdb -f /tmp/seed.sql
