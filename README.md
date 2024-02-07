@@ -12,3 +12,7 @@
 + PES => product editted successfully
 + PDS => product deleted successfully
 + PAF => product add failed
+
+## Configs
++ docker-compose exec postgres psql -U admin -d newdb -f /tmp/seed.sql
++ git clone --recurse-submodules [git remote address]
